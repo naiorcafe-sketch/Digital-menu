@@ -3,111 +3,91 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="theme-color" content="#160900">
-
-<title>Naior Cafe | Digital Menu</title>
+<title>Naior Cafe | Digital Menu & Orders</title>
 
 <style>
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+*{box-sizing:border-box;margin:0;padding:0}
+body{
+ background:#160900;color:#fff;
+ font-family:Arial,sans-serif;
 }
-
-body {
-    background: #160900;
-    color: #fff;
-    font-family: Arial, sans-serif;
+header{
+ text-align:center;padding:22px 10px;
+ background:linear-gradient(135deg,#160900,#603000,#160900);
+ border-bottom:2px solid #e6b83f;
 }
-
-header {
-    text-align: center;
-    padding: 18px 10px;
-    background: linear-gradient(135deg, #160900, #542600, #160900);
-    border-bottom: 2px solid #d9a62e;
+header h1{color:#ffce49;font-size:32px;letter-spacing:3px}
+header p{font-size:12px;letter-spacing:4px;margin-top:7px}
+.menu{max-width:950px;margin:auto;padding:10px}
+.menu img{
+ width:100%;height:auto;display:block;
+ border:2px solid #d9a62e;border-radius:7px;
+ margin-bottom:12px;cursor:zoom-in;
 }
-
-header h1 {
-    color: #ffcf45;
-    font-size: 30px;
-    letter-spacing: 3px;
+.order{
+ max-width:700px;margin:25px auto;
+ padding:20px 15px;
+ border:2px solid #d9a62e;
+ border-radius:15px;
+ background:linear-gradient(145deg,#301500,#130700);
 }
-
-header p {
-    color: #fff0bd;
-    font-size: 11px;
-    letter-spacing: 4px;
-    margin-top: 5px;
+.order h2{
+ color:#ffce49;text-align:center;
+ font-size:27px;margin-bottom:8px;
 }
-
-.menu {
-    width: 100%;
-    max-width: 1000px;
-    margin: auto;
-    padding: 10px;
+.sub{text-align:center;color:#e9d5a3;margin-bottom:22px}
+label{display:block;margin:15px 0 7px;color:#ffce49;font-weight:bold}
+input,select{
+ width:100%;padding:13px;
+ border-radius:8px;border:1px solid #c69a38;
+ background:#fff;color:#222;font-size:16px;
 }
-
-.menu img {
-    display: block;
-    width: 100%;
-    height: auto;
-    margin: 0 auto 12px;
-    border: 2px solid #d9a62e;
-    border-radius: 8px;
-    cursor: zoom-in;
+button{
+ border:0;border-radius:8px;padding:13px;
+ font-size:16px;font-weight:bold;cursor:pointer;
 }
-
-footer {
-    text-align: center;
-    color: #ffcf45;
-    padding: 18px 5px;
-    font-size: 13px;
-    letter-spacing: 2px;
-    border-top: 1px solid #d9a62e;
+.add{
+ width:100%;margin-top:12px;
+ background:#e9b936;color:#190b00;
 }
-
-/* Full screen image viewer */
-.viewer {
-    display: none;
-    position: fixed;
-    inset: 0;
-    z-index: 1000;
-    background: rgba(0,0,0,0.97);
-    align-items: center;
-    justify-content: center;
-    padding: 8px;
+.item{
+ background:#4b290e;border:1px solid #b98b30;
+ border-radius:8px;padding:12px;margin-top:10px;
+ display:flex;justify-content:space-between;
+ align-items:center;gap:8px;
 }
-
-.viewer img {
-    max-width: 100%;
-    max-height: 95vh;
-    object-fit: contain;
+.item button{
+ background:#a83220;color:white;padding:7px 12px;
 }
-
-.close {
-    position: absolute;
-    top: 12px;
-    right: 18px;
-    color: white;
-    font-size: 38px;
-    cursor: pointer;
-    z-index: 1001;
+.total{
+ text-align:center;padding:18px;margin-top:18px;
+ border-top:1px solid #d9a62e;
+ color:#ffce49;font-size:25px;font-weight:bold;
 }
-
-@media (max-width: 600px) {
-    header h1 {
-        font-size: 25px;
-    }
-
-    .menu {
-        padding: 5px;
-    }
-
-    .menu img {
-        border-radius: 4px;
-        margin-bottom: 8px;
-    }
+.send{
+ width:100%;background:#20bd61;color:white;
+ margin-top:12px;font-size:18px;
+}
+.clear{
+ width:100%;margin-top:8px;
+ background:#65401d;color:white;
+}
+.hint{font-size:12px;color:#d9c7a0;margin-top:7px}
+footer{
+ text-align:center;padding:20px;
+ color:#ffce49;letter-spacing:2px;
+}
+.viewer{
+ display:none;position:fixed;inset:0;
+ background:#000e;z-index:10;
+ align-items:center;justify-content:center;padding:8px;
+}
+.viewer img{max-width:100%;max-height:95vh;object-fit:contain}
+.close{
+ position:absolute;top:12px;right:20px;
+ font-size:40px;color:white;cursor:pointer;
 }
 </style>
 </head>
@@ -115,43 +95,430 @@ footer {
 <body>
 
 <header>
-    <h1>NAIOR CAFE</h1>
-    <p>SIP • RELAX • REPEAT</p>
+<h1>NAIOR CAFE</h1>
+<p>SIP • RELAX • REPEAT</p>
 </header>
 
-<main class="menu">
+<!-- ORIGINAL MENU PHOTOS -->
+<div class="menu">
+<img src="menu1.jpg" alt="Naior Cafe Menu 1"
+ onclick="openImage(this.src)">
+<img src="menu2.jpg" alt="Naior Cafe Menu 2"
+ onclick="openImage(this.src)">
+</div>
 
-    <img src="menu1.jpg"
-         alt="Naior Cafe Menu Page 1"
-         onclick="openImage(this.src)">
+<!-- ONLINE ORDER SECTION -->
+<section class="order">
 
-    <img src="menu2.jpg"
-         alt="Naior Cafe Menu Page 2"
-         onclick="openImage(this.src)">
+<h2>PLACE YOUR ORDER</h2>
+<p class="sub">Good Food • Good Mood ❤️</p>
 
-</main>
+<label for="customer">Your Name</label>
+<input id="customer" type="text"
+ placeholder="Enter your name">
+
+<label for="product">Select / Type Your Item</label>
+<input id="product" list="items"
+ placeholder="Search food or drink..."
+ oninput="findPrice()">
+
+<datalist id="items"></datalist>
+
+<label>Price</label>
+<input id="price" readonly placeholder="Automatic price">
+
+<label for="qty">Quantity</label>
+<input id="qty" type="number" min="1" value="1">
+
+<button class="add" onclick="addItem()">
++ ADD TO ORDER
+</button>
+
+<p class="hint">
+Select an item from the suggestions to get its price.
+For pizza, select the required size.
+</p>
+
+<h3 style="color:#ffce49;margin-top:25px">
+YOUR ORDER
+</h3>
+
+<div id="cart">
+<p style="color:#c9b99c;margin-top:12px">
+No items added yet.
+</p>
+</div>
+
+<div class="total">
+TOTAL: ₹<span id="total">0</span>
+</div>
+
+<button class="send" onclick="sendOrder()">
+🟢 ORDER ON WHATSAPP
+</button>
+
+<button class="clear" onclick="clearOrder()">
+CLEAR ORDER
+</button>
+
+<p class="hint" style="text-align:center;margin-top:14px">
+Your order will be sent to Naior Cafe on WhatsApp.
+</p>
+
+</section>
 
 <footer>
-    GOOD FOOD ✦ GOOD MOOD
+GOOD FOOD ✦ GOOD MOOD
 </footer>
 
+<!-- IMAGE ZOOM -->
 <div class="viewer" id="viewer" onclick="closeImage()">
-    <span class="close">&times;</span>
-    <img id="fullImage" src="" alt="Full Menu"
-         onclick="event.stopPropagation()">
+<span class="close">&times;</span>
+<img id="fullImage" src="" alt="Full menu"
+ onclick="event.stopPropagation()">
 </div>
 
 <script>
-function openImage(src) {
-    document.getElementById("fullImage").src = src;
-    document.getElementById("viewer").style.display = "flex";
+
+// MENU ITEMS AND PRICES
+const menu = {
+
+"Classic Garlic Bread":69,
+"Cheese Garlic Bread":69,
+"Chilli Garlic Bread":49,
+"Peri-Peri Garlic Bread":59,
+"Cheese Chilli Garlic Bread":59,
+"Herb Chilli Garlic Bread":69,
+"Loaded Cheese Garlic Bread":69,
+"Pesto Garlic Bread":89,
+"Jalapeno Garlic Bread":89,
+
+"French Fries":89,
+"Masala Fries":99,
+"Peri-Peri Fries":99,
+"Twister Fries":99,
+"Veg Nuggets (8 Pcs)":99,
+"Veg Nuggets (12 Pcs)":119,
+"Smiles":99,
+"Veg Breaded Fries":109,
+"Onion Rings":109,
+"Veg Fingers":99,
+"Crispy Starters":99,
+"Potato Bites":99,
+
+"Classic Veg Burger":59,
+"Cheese Veg Burger":59,
+"Spicy Veg Burger":69,
+"Paneer Burger":79,
+"Aloo Tikki Burger":49,
+"Mushroom Burger":49,
+"Crispy Veg Burger":69,
+"BBQ Veg Burger":75,
+"Loaded Veg Burger":99,
+
+"Strawberry Shake":99,
+"Mango Shake":99,
+"Butterscotch Shake":109,
+"Chocolate Shake":119,
+"Kitkat Shake":119,
+"Oreo Shake":119,
+
+"Classic Arrabbiata Pasta":129,
+"Creamy Alfredo Pasta":129,
+"Pesto Pasta":149,
+"Red & Cheese Pasta":149,
+"Pink Sauce Pasta":149,
+"Mushroom Garlic Pasta":149,
+"Mix Veg Pasta":129,
+"Mac & Cheese":149,
+
+"Classic Veg Wrap":49,
+"Paneer Wrap":69,
+"Veggie Corn Wrap":69,
+"Veggie Grain Wrap":69,
+"Veggie Tikka Wrap":69,
+
+"Margherita Pizza Small":89,
+"Margherita Pizza Medium":109,
+"Margherita Pizza Large":149,
+"Cheese Pizza Small":89,
+"Cheese Pizza Medium":159,
+"Cheese Pizza Large":199,
+"Veggie Delight Pizza Small":89,
+"Veggie Delight Pizza Medium":109,
+"Veggie Delight Pizza Large":149,
+"Paneer Tikka Pizza Small":89,
+"Paneer Tikka Pizza Medium":109,
+"Paneer Tikka Pizza Large":149,
+"BBQ Mushroom Pizza Small":89,
+"BBQ Mushroom Pizza Medium":149,
+"BBQ Mushroom Pizza Large":239,
+"Mushroom & Onion Pizza Small":89,
+"Mushroom & Onion Pizza Medium":109,
+"Mushroom & Onion Pizza Large":149,
+
+"Biscoff Shake":149,
+"Choco Crunch Shake":149,
+"Red Velvet Shake":159,
+"Blind Love Shake":159,
+
+"Veg Momos":149,
+"Fried Momos":149,
+"Paneer Momos":169,
+"Veg Hakka Noodles":179,
+"Veg Manchurian":179,
+"Spring Roll":169,
+
+"Chicken Momos":179,
+"Chicken Kurkure Momos":159,
+"Chicken Spring Roll":199,
+"Chicken Cheese Corn Roll":209,
+
+"Classic Wings (5 Pcs)":189,
+"Chicken Popcorn":279,
+"Chilli Chicken Half":209,
+"Chilli Chicken Full":359,
+"Family Chicken Bucket":439,
+
+"Chicken Burger":189,
+"Cheese Chicken Burger":199,
+"Spicy Chicken Burger":209,
+"BBQ Chicken Burger":219,
+"Chicken Whooper Burger":219,
+
+"Exotic Tikka Pizza Small":199,
+"Exotic Tikka Pizza Medium":299,
+"Exotic Tikka Pizza Large":349,
+"Shahi Chicken Pizza Small":239,
+"Shahi Chicken Pizza Medium":299,
+"Shahi Chicken Pizza Large":349,
+"Peri Peri Chicken Pizza Small":239,
+"Peri Peri Chicken Pizza Medium":299,
+"Peri Peri Chicken Pizza Large":349,
+"Fire Pizza Small":239,
+"Fire Pizza Medium":299,
+"Fire Pizza Large":349,
+
+"Midnight Mist (Blueberry)":99,
+"Crisp Oasis (Virgin)":89,
+"Lunar Lemon":69,
+"Tropical Majesty (Fruit Punch)":109,
+"Pineapple Blossom":89,
+"Apple-tini":99,
+"Kala Khatta Fizz":99,
+"Cinnamon Cosmo (Cranberry)":109,
+"Candy Cloud (Bubble Gum)":129,
+"Pink Lady":129,
+
+"Aloo Paratha":49,
+"Gobhi Paratha":49,
+"Onion Paratha":49,
+"Mooli Paratha":49,
+"Mix Paratha":69,
+"Paneer Paratha":69,
+"Dahi":39,
+"Butter":19,
+
+"Sweet Lassi":49,
+"Salted Lassi":49,
+"Mango Lassi":69,
+"Rose Lassi":69,
+"Strawberry Lassi":69,
+"Chocolate Lassi":69,
+
+"Classic Cold Coffee":59,
+"Mocha Cold Coffee":69,
+"Caramel Cold Coffee":69,
+"Hazelnut Cold Coffee":69,
+"Chocolate Cold Coffee":69,
+
+"Cappuccino":89,
+"Cafe Latte":89,
+"Add On":39,
+"Espresso":79,
+"Cafe Mocha":99,
+"Americano":89,
+"Affogato":109,
+"Hot Chocolate":79,
+
+"Fried Chicken":189,
+"Fried Fish":259,
+"Rumali Roti":39,
+"Drumsticks Half":219,
+"Drumsticks Full":399,
+"Chicken Wings (10 Pcs)":349,
+"Chicken Nuggets (8 Pcs)":149,
+"Chicken Strips (4 Pcs)":159,
+"Chicken Strips (6 Pcs)":209,
+"Chicken Seekh Kabab":139,
+"Mutton Seekh Kabab":219,
+"Homestyle Chicken Half":319,
+"Homestyle Chicken Full":549,
+"Homestyle Mutton Half":349,
+"Homestyle Mutton Full":649,
+
+"Chilli Garlic Potato Shots (8 Pcs)":79,
+"Chilli Garlic Potato Shots (12 Pcs)":89,
+"Cheesy Corn Triangle":99,
+"Veggie Pizza Pocket":89,
+"Cheesy Pocket":99,
+"Cheesy Pizza Fingers":89,
+"Crispy Chicken Fries":119
+};
+
+// LOAD ITEM SUGGESTIONS
+const datalist = document.getElementById("items");
+
+Object.keys(menu).forEach(name=>{
+ const option=document.createElement("option");
+ option.value=name;
+ datalist.appendChild(option);
+});
+
+let cart=[];
+
+function findPrice(){
+ const name=document.getElementById("product").value;
+ const price=document.getElementById("price");
+
+ if(Object.prototype.hasOwnProperty.call(menu,name)){
+   price.value="₹"+menu[name];
+ }else{
+   price.value="";
+ }
 }
 
-function closeImage() {
-    document.getElementById("viewer").style.display = "none";
-    document.getElementById("fullImage").src = "";
+function addItem(){
+ const name=document.getElementById("product").value.trim();
+ const qty=parseInt(document.getElementById("qty").value,10);
+
+ if(!document.getElementById("customer").value.trim()){
+   alert("Please enter your name first.");
+   document.getElementById("customer").focus();
+   return;
+ }
+
+ if(!Object.prototype.hasOwnProperty.call(menu,name)){
+   alert("Please select a valid menu item from the suggestions.");
+   return;
+ }
+
+ if(!Number.isInteger(qty)||qty<1){
+   alert("Please enter a valid quantity.");
+   return;
+ }
+
+ const existing=cart.find(item=>item.name===name);
+
+ if(existing){
+   existing.qty+=qty;
+ }else{
+   cart.push({name:name,price:menu[name],qty:qty});
+ }
+
+ document.getElementById("product").value="";
+ document.getElementById("price").value="";
+ document.getElementById("qty").value=1;
+
+ showCart();
 }
+
+function showCart(){
+ const area=document.getElementById("cart");
+ area.innerHTML="";
+
+ let total=0;
+
+ if(cart.length===0){
+   area.innerHTML='<p style="color:#c9b99c">No items added yet.</p>';
+ }
+
+ cart.forEach((item,index)=>{
+   const amount=item.price*item.qty;
+   total+=amount;
+
+   const row=document.createElement("div");
+   row.className="item";
+
+   const info=document.createElement("span");
+   info.textContent=item.name+" × "+item.qty+
+     " = ₹"+amount;
+
+   const remove=document.createElement("button");
+   remove.textContent="Remove";
+   remove.onclick=()=>{
+     cart.splice(index,1);
+     showCart();
+   };
+
+   row.append(info,remove);
+   area.appendChild(row);
+ });
+
+ document.getElementById("total").textContent=total;
+}
+
+function sendOrder(){
+ const customer=document.getElementById("customer").value.trim();
+
+ if(!customer){
+   alert("Please enter your name.");
+   return;
+ }
+
+ if(cart.length===0){
+   alert("Please add at least one item.");
+   return;
+ }
+
+ let total=0;
+
+ let message="*NEW ORDER - NAIOR CAFE*%0A";
+ message+="--------------------------%0A";
+ message+="Customer Name: "+encodeURIComponent(customer)+"%0A";
+ message+="--------------------------%0A";
+
+ cart.forEach(item=>{
+   const amount=item.price*item.qty;
+   total+=amount;
+
+   message+=encodeURIComponent(item.name)+
+     " x "+item.qty+
+     " = Rs. "+amount+"%0A";
+ });
+
+ message+="--------------------------%0A";
+ message+="*TOTAL: Rs. "+total+"*%0A";
+ message+="Thank you!";
+
+ const whatsappURL=
+ "https://wa.me/919814252777?text="+message;
+
+ window.open(whatsappURL,"_blank");
+}
+
+function clearOrder(){
+ if(confirm("Clear your complete order?")){
+   cart=[];
+   document.getElementById("product").value="";
+   document.getElementById("price").value="";
+   document.getElementById("qty").value=1;
+   showCart();
+ }
+}
+
+// IMAGE ZOOM
+function openImage(src){
+ document.getElementById("fullImage").src=src;
+ document.getElementById("viewer").style.display="flex";
+}
+
+function closeImage(){
+ document.getElementById("viewer").style.display="none";
+ document.getElementById("fullImage").src="";
+}
+
 </script>
-
 </body>
 </html>
+
